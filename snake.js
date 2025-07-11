@@ -108,6 +108,6 @@ window.onload = () => {
   context = board.getContext("2d");
 
   placeFood();
-  document.addEventListener("keyup", changeDirection);
+  document.addEventListener("keydown", changeDirection);
   setInterval(update, 1000 / 10); //100milliseconds
 };
