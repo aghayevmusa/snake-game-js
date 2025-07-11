@@ -75,18 +75,20 @@ const update = () => {
 
   if (
     snakeX < 0 ||
-    snakeX > cols * blockSize ||
-    snakeY > 0 ||
-    snakeY < rows * blockSize
+    snakeX >= columns * blockSize ||
+    snakeY < 0 ||
+    snakeY >= rows * blockSize
   ) {
     gameOver = true;
     alert("Game Over!");
+    window.location.reload();
   }
 
   for (let i = 0; i < snakeBody.length; i++) {
     if (snakeX === snakeBody[i][0] && snakeY === snakeBody[i][1]) {
       gameOver = true;
       alert("Game Over!");
+      window.location.reload();
     }
   }
 };
@@ -103,7 +105,7 @@ window.onload = () => {
   board = document.getElementById("board");
   board.height = rows * blockSize;
   board.width = columns * blockSize;
-  context = board.getContext("2d"); // used for drawing on the board
+  context = board.getContext("2d");
 
   placeFood();
   document.addEventListener("keyup", changeDirection);
